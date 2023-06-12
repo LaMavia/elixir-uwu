@@ -1,4 +1,5 @@
 defmodule UwuEditorWeb.Router do
+  # alias UwuEditorWeb.UserController
   use UwuEditorWeb, :router
   # alias UwuEditorWeb.UserController
 
@@ -16,6 +17,8 @@ defmodule UwuEditorWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_user
   end
 
   scope "/", UwuEditorWeb do
@@ -26,18 +29,14 @@ defmodule UwuEditorWeb.Router do
     get "/register", UserController, :register_view
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", UwuEditorWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", UwuEditorWeb do
+    pipe_through :api
+    post "/login", UserController, :login_endpoint
+    post "/is-logged-in", UserController, :is_logged_in_endpoint
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:uwu_editor, :dev_routes) do
-    # If you want to use the LiveDashboard in production, you should put
-    # it behind authentication and allow only admins to access it.
-    # If your application does not have an admins-only section yet,
-    # you can use Plug.BasicAuth to set up some basic authentication
-    # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
