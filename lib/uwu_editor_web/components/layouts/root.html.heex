@@ -1,58 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" class="[scrollbar-gutter:stable]">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/fira_code.min.css"
+      integrity="sha512-MbysAYimH1hH2xYzkkMHB6MqxBqfP0megxsCLknbYqHVwXTCg9IqHbk+ZP/vnhO8UEW6PaXAkKe2vQ+SWACxxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta name="csrf-token" content={get_csrf_token()} />
     <.live_title suffix=" · Phoenix Framework">
       <%= assigns[:page_title] || "UwuEditor" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-    </script>
   </head>
-  <body class="bg-white antialiased">
-    <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
-      <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6 text-zinc-900">
-          <%= @current_user.email %>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Settings
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_out"}
-            method="delete"
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log out
-          </.link>
-        </li>
-      <% else %>
-        <li>
-          <.link
-            href={~p"/users/register"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Register
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_in"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log in
-          </.link>
-        </li>
-      <% end %>
-    </ul>
-    <%= @inner_content %>
+
+  <body class="body">
+    <input type="checkbox" name="theme-switch" id="theme-switch" checked />
+    <div class="page">
+      <label for="theme-switch" class="theme-switch"></label>
+      <%= @inner_content %>
+      <nav class="mobile-nav">
+        <button type="button" class="mobile-nav__burger mobile-nav-button">M</button>
+        <ul class="mobile-nav__menu spead">
+          <li class="spread__item">
+            <a href="#files" class="mobile-nav-button">Fs</a>
+          </li>
+          <li class="spread__item">
+            <a href="#editor" class="mobile-nav-button">E</a>
+          </li>
+          <li class="spread__item">
+            <a href="#fragment" class="mobile-nav-button">Fg</a>
+          </li>
+          <li class="spread__item">
+            <a href="#config" class="mobile-nav-button">C</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </body>
 </html>

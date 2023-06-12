@@ -1,0 +1,39 @@
+<section class="files labeled-area" id="files">
+  <div class="labeled-area__label label">
+    <h3 class="label__header">files</h3>
+    <div class="label__actions actions actions--show">
+      <%!-- <button js-role="directory_add" class="actions__button">
+        <% render "../mixins_html/icons/directory-add.svg" %>
+      </button>
+      <button js-role="file_add" class="actions__button">
+        <% render "../mixins_html/icons/file-add.svg" %>
+      </button> --%>
+    </div>
+  </div>
+  <div class="labeled-area__content labeled-area__content--files">
+    <ul id="files-root-tree" class="tree"></ul>
+  </div>
+
+  <dialog class="dialog dialog--form" js-role="tree_crud">
+    <form
+      enctype="multipart/form-data"
+      action=""
+      method="post"
+      class="dialog__form"
+      id="tree_crud_form"
+    >
+      <h3 class="dialog__title" id="tree_crud_dialog_title"></h3>
+      <div class="dialog__contents" id="tree_crud_dialog_contents">
+        <p>
+          Are you sure you want to delete <span></span>?
+        </p>
+      </div>
+      <div class="dialog__actions">
+        <button js-role="file_upload_close" class="dialog__button" type="button">
+          cancel
+        </button>
+        <button class="dialog__button" type="submit">confirm</button>
+      </div>
+    </form>
+  </dialog>
+</section>

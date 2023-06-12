@@ -1,0 +1,15 @@
+<dialog class="dialog dialog--form" js-role="file_upload">
+  <form enctype="multipart/form-data" action="" class="dialog__form">
+    <h3 class="dialog__title">upload a file</h3>
+    <div class="dialog__contents">
+      <p class="dialog__text">Do you want to upload this file to <span js-role="file-name"></span>?</p>
+      <input class="dialog__input dialog__input--file" type="file" name="file" id="file" accept=".c" />
+    </div>
+    <div class="dialog__actions">
+      <button js-role="file_upload_close" class="dialog__button" type="button">
+        close
+      </button>
+      <button class="dialog__button" type="submit">upload</button>
+    </div>
+  </form>
+</dialog>

@@ -1,0 +1,86 @@
+<section class="labeled-area editor" id="editor">
+  <h3 class="labeled-area__label"><%= assigns[:file][:name]  %></h3>
+  <div class="code" id="code"></div>
+
+  <dialog class="dialog dialog--form" js-role="section_crud">
+    <form enctype="multipart/form-data" action="" method="post" class="dialog__form" id="section_crud_form">
+      <h3 class="dialog__title" id="section_crud_dialog_title"></h3>
+      <div class="dialog__contents" id="section_crud_dialog_contents">
+        <p>
+          Are you sure you want to delete section <br>
+        <pre js-role="section-name"></pre>
+        </p>
+      </div>
+      <div class="dialog__actions">
+        <button js-role="section_close" class="dialog__button" type="button">
+          cancel
+        </button>
+        <button class="dialog__button" type="submit">confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog dialog--form" js-role="section_add">
+    <form enctype="multipart/form-data" action="" method="post" class="dialog__form" id="section_add_form">
+      <h3 class="dialog__title" id="section_add_dialog_title"></h3>
+      <div class="dialog__contents dialog__contents--vertical" id="section_add_dialog_contents">
+        <input type="hidden" name="file_id" id="section_file_id">
+        <div class="dialog__row">
+          <label for="section_beginning_preview" class="form__label">
+            beginning
+          </label>
+          <input type="hidden" name="beginning" id="section_beginning" required class="form__input form__input--text">
+          <input type="number" disabled class="form__input form__input--text" id="section_beginning_preview">
+        </div>
+
+        <div class="dialog__row">
+          <label for="section_end_preview" class="form__label">
+            end
+          </label>
+          <input type="hidden" name="end" id="section_end" class="form__input form__input--text">
+          <input type="number" disabled class="form__input form__input--text" id="section_end_preview">
+        </div>
+
+
+        <div class="dialog__row">
+          <label for="section_name" class="form__label">
+            name
+          </label>
+          <input type="text" name="name" id="section_name" required class="form__input form__input--text">
+        </div>
+
+        <div class="dialog__row">
+          <label for="section_description" class="form__label">
+            description
+          </label>
+          <textarea name="description" id="section_description" class="form__input form__input--text"
+            style="resize: vertical;"></textarea>
+        </div>
+
+        <div class="dialog__row">
+          <label for="section_kind" class="form__label">kind</label>
+          <select required name="kind" class="form__input form__input--select" id="section_kind"></select>
+        </div>
+
+        <div>
+          <label for="" class="form__label">contents</label>
+          <input type="hidden" name="contents" id="section_contents">
+          <pre id="section_contents_preview">        __asm
+            mov     r0, dpl
+    00001$: mov     r1, #230
+    00002$: nop
+            nop
+            nop
+            nop</pre>
+        </div>
+
+      </div>
+      <div class="dialog__actions">
+        <button js-role="section_close" class="dialog__button" type="button">
+          cancel
+        </button>
+        <button class="dialog__button" type="submit">confirm</button>
+      </div>
+    </form>
+  </dialog>
+</section>
