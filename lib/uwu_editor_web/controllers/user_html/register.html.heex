@@ -1,0 +1,30 @@
+<div class="center-block">
+  <form action="/register/" method="post" class="form auth-form">
+    <input
+      class="form__input auth-form__input"
+      type="text"
+      placeholder="username"
+      name="username"
+      id="username"
+    />
+    <input
+      class="form__input auth-form__input"
+      type="text"
+      placeholder="email"
+      name="email"
+      id="email"
+    />
+    <input
+      class="form__input auth-form__input"
+      type="password"
+      placeholder="password"
+      name="password"
+      id="password"
+    />
+
+    <button class="auth-form__button" type="submit">Register</button>
+    <a class="auth-form__link" href="/login/">login instead</a>
+  </form>
+</div>
+<script type="module" src={~p"/assets/register.js"}>
+</script>

@@ -1,5 +1,6 @@
 defmodule UwuEditorWeb.Router do
   use UwuEditorWeb, :router
+  # alias UwuEditorWeb.UserController
 
   import UwuEditorWeb.UserAuth
 
@@ -21,6 +22,8 @@ defmodule UwuEditorWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/login", UserController, :login_view
+    get "/register", UserController, :register_view
   end
 
   # Other scopes may use custom stacks.
