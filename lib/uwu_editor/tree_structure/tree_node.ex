@@ -1,4 +1,7 @@
 defmodule UwuEditor.TreeStructure.TreeNode do
+  alias Ecto.Changeset
+  alias UwuEditor.TreeStructure.TreeNode
+  alias UwuEditor.Repo
   use Ecto.Schema
   import Ecto.Changeset
   # import Ecto.Migration, only: []
@@ -19,7 +22,26 @@ defmodule UwuEditor.TreeStructure.TreeNode do
   @doc false
   def changeset(tree_node, attrs) do
     tree_node
-    |> cast(attrs, [:name, :description, :creation_date, :available, :availability_change_date, :content_change_date])
-    |> validate_required([:name, :description, :creation_date, :available, :availability_change_date, :content_change_date])
+    |> cast(attrs, [
+      :name,
+      :description,
+      :creation_date,
+      :available,
+      :availability_change_date,
+      :content_change_date
+    ])
+    |> validate_required([:name])
+  end
+
+  @spec disable(term) :: {:error, any} | {:ok, 1}
+  def disable(tree_node_id) do
+    with {:ok, tree_node} <- Repo.get(TreeNode, tree_node_id),
+         {:ok, _} <-
+           Ecto.Changeset.change(tree_node, available: false)
+           |> Repo.update() do
+      {:ok, 1}
+    else
+      {:error, err} -> {:error, err}
+    end
   end
 end
