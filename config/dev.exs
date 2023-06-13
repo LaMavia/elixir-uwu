@@ -2,10 +2,12 @@ import Config
 
 # Configure your database
 config :uwu_editor, UwuEditor.Repo,
-  database: Path.expand("../uwu_editor_dev.db", Path.dirname(__ENV__.file)),
-  pool_size: 5,
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true
+  username: "mavia",
+  password: "QSEawd12",
+  hostname: "localhost",
+  database: "hello_dev",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

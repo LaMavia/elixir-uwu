@@ -1,5 +1,5 @@
 defmodule UwuEditorWeb.UserAuthTest do
-  use UwuEditorWeb.ConnCase
+  use UwuEditorWeb.ConnCase, async: true
 
   alias Phoenix.LiveView
   alias UwuEditor.Accounts
